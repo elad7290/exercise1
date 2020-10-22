@@ -87,7 +87,7 @@ float dev(Point p,Point** points, int size){
 
 // returns the deviation between point p and the line -->|y'-y|
 float dev(Point p,Line l){
-	return abs(l.f(p.x)-p.y);
+	return std::abs(l.f(p.x)-p.y);
 }
 
 
