@@ -72,11 +72,13 @@ int main(){
 
 	generateTrainCSV(a1,b1,a2,b2);
 	TimeSeries ts("trainFile1.csv");
-	/**
+	
+	
 	SimpleAnomalyDetector ad;
 	ad.learnNormal(ts);
+	
 	vector<correlatedFeatures> cf=ad.getNormalModel();
-
+	
 	if(cf.size()!=2)
 		cout<<"wrong size of correlated features (-40)"<<endl;
 	else
@@ -84,7 +86,7 @@ int main(){
 		checkCorrelationTrain(c,"A","C",a1,b1); // 20 points
 		checkCorrelationTrain(c,"B","D",a2,b2); // 20 points
 	});
-
+	/**
 	// test the anomaly detector: (60 points)
 	// one simply anomaly is injected to the data
 	int anomaly=5+rand()%90; // one anomaly injected in a random time step
@@ -108,6 +110,6 @@ int main(){
 		cout<<"you have "<<falseAlarms<<" false alarms (-"<<min(30,falseAlarms*3)<<")"<<endl;
 
 	cout<<"done"<<endl;
-	**/
 	return 0;
+	**/
 }
