@@ -30,7 +30,6 @@ public:
 	vector<correlatedFeatures> getNormalModel(){
 		return cf;
 	}
-
 };
 
 #endif /* SIMPLEANOMALYDETECTOR_H_ */
