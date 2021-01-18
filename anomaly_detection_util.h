@@ -11,6 +11,7 @@ float var(float* x, int size);
 // returns the covariance of X and Y
 float cov(float* x,  float* y, int size);
 
+
 // returns the Pearson correlation coefficient of X and Y
 float pearson(float* x, float* y, int size);
 
@@ -26,7 +27,8 @@ public:
 
 class Point{
 public:
-	const float x,y;
+	float x,y;
+	Point():x(0),y(0){};
 	Point(float x, float y):x(x),y(y){}
 };
 

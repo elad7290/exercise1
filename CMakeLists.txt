@@ -9,4 +9,4 @@ add_executable(my_project
         anomaly_detection_util.cpp
         MainTrain.cpp
         SimpleAnomalyDetector.cpp
-        timeseries.cpp)
+        timeseries.cpp HybridAnomalyDetector.cpp minCircle.cpp CLI.cpp CLI.h)

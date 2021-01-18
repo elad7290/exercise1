@@ -1,7 +1,7 @@
 #include "SimpleAnomalyDetector.h"
 #include "anomaly_detection_util.h"
 
-#define THRESHOLD 0.9
+//#define THRESHOLD 0.9
 #define PRECISION 1.1
 
 //declaration of functions
@@ -16,6 +16,7 @@ void freeMemory(vector<Point *> vector);
 
 SimpleAnomalyDetector::SimpleAnomalyDetector() {
     cf = vector<correlatedFeatures>(0);
+    m_threshold=0.9;
 }
 
 SimpleAnomalyDetector::~SimpleAnomalyDetector() {
@@ -71,7 +72,7 @@ vector<AnomalyReport> SimpleAnomalyDetector::detect(const TimeSeries &ts) {
         for (int j = 0; j < lengthOfVector; ++j) {
             if (cf[i].threshold < dev(*pointOfSampleOneAndTwo[j], cf[i].lin_reg)) {
                 string s = cf[i].feature1 + "-" + cf[i].feature2;
-                long timeStep=j+1;
+                long timeStep = j + 1;
                 anomalyDetector.push_back(AnomalyReport(s, timeStep));
             }
         }
@@ -85,7 +86,7 @@ vector<AnomalyReport> SimpleAnomalyDetector::detect(const TimeSeries &ts) {
  * Release dynamic allocation.*
  * ****************************
  * */
-void freeMemory(vector<Point *> vector) {
+void SimpleAnomalyDetector::freeMemory(vector<Point *> vector) {
     for (Point *p : vector) {
         delete (p);
     }
@@ -96,7 +97,7 @@ void freeMemory(vector<Point *> vector) {
  * This function returns pairs of features and their correlative properties.*
  * **************************************************************************
  **/
-vector<pair<pair<string, string>, float>> coralFeatuers(const TimeSeries &ts) {
+vector<pair<pair<string, string>, float>> SimpleAnomalyDetector::coralFeatuers(const TimeSeries &ts) {
     vector<string> names = ts.getFeatures();
     float max, temp;
     pair<string, string> corlPairsName;
@@ -110,7 +111,7 @@ vector<pair<pair<string, string>, float>> coralFeatuers(const TimeSeries &ts) {
                 corlPairsName = make_pair(names[i], names[j]);
             }
         }
-        if (max >= THRESHOLD) {
+        if (max >=m_threshold) {
             c.push_back(make_pair(corlPairsName, max));
         }
     }
@@ -122,7 +123,7 @@ vector<pair<pair<string, string>, float>> coralFeatuers(const TimeSeries &ts) {
  * Creates an array of points from 2 different vectors.*
  * *****************************************************
  **/
-vector<Point *> createsAPoins(vector<float> x, vector<float> y) {
+vector<Point *> SimpleAnomalyDetector::createsAPoins(vector<float> x, vector<float> y) {
     vector<Point *> points;
     for (int i = 0; i < x.size(); i++) {
         points.push_back(new Point(x[i], y[i]));
@@ -135,7 +136,7 @@ vector<Point *> createsAPoins(vector<float> x, vector<float> y) {
  * This function returns a maximum offset.*
  * ****************************************
  **/
-float maxOffset(vector<Point *> p, Line line) {
+float SimpleAnomalyDetector::maxOffset(vector<Point *> p, Line line) {
     float max = 0;
     for (Point *point : p) {
         float temp = dev(*point, line);
@@ -144,4 +145,15 @@ float maxOffset(vector<Point *> p, Line line) {
         }
     }
     return max;
+}
+/**
+ * ***************************************************************************
+ * This function returns true if we need to run the simple anomaly detection.*
+ * ***************************************************************************
+ **/
+bool SimpleAnomalyDetector::isSimple(float corrlation){
+    if(abs(corrlation)>=m_threshold){
+        return true;
+    }
+    return false;
 }
