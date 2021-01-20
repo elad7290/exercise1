@@ -35,6 +35,9 @@ TimeSeries::TimeSeries(const char *CSVfileName)
 	file.close();
 }
 
+TimeSeries::TimeSeries(map<string, vector<float>> features) {
+    m_features=features;
+}
 map<string, vector<float>> TimeSeries::getMap() const
 {
 	return m_features;

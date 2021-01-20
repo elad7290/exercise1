@@ -16,9 +16,17 @@ timeseries.h
 math.h
 /home/elad/my_project/math.h
 
-/home/elad/my_project/HybridAnomalyDetector.cpp
-HybridAnomalyDetector.h
-/home/elad/my_project/HybridAnomalyDetector.h
+/home/elad/my_project/CLI.cpp
+CLI.h
+/home/elad/my_project/CLI.h
+timeseries.h
+/home/elad/my_project/timeseries.h
+
+/home/elad/my_project/CLI.h
+string.h
+-
+commands.h
+/home/elad/my_project/commands.h
 
 /home/elad/my_project/HybridAnomalyDetector.h
 SimpleAnomalyDetector.h
@@ -41,6 +49,20 @@ math.h
 -
 
 /home/elad/my_project/anomaly_detection_util.h
+
+/home/elad/my_project/commands.h
+iostream
+-
+string.h
+-
+sstream
+-
+fstream
+-
+vector
+-
+HybridAnomalyDetector.h
+/home/elad/my_project/HybridAnomalyDetector.h
 
 /home/elad/my_project/minCircle.h
 iostream

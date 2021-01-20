@@ -14,7 +14,9 @@ private:
 	map<string, vector<float>> m_features;
 
 public:
+    TimeSeries(){};
 	TimeSeries(const char *CSVfileName);
+	TimeSeries(map<string, vector<float>> features);
 	map<string, vector<float>> getMap() const;
 	int getLength(string s) const;
 	vector<float> getValSamples(string s) const;

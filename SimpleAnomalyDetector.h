@@ -40,6 +40,8 @@ public:
     float maxOffset(vector<Point *> p, Line line);
     void freeMemory(vector<Point *> vector);
     vector<Point *> createsAPoins(vector<float> x, vector<float> y);
+    float getThreshold();
+    void setThreshold(float newThreshold);
 };
 
 #endif /* SIMPLEANOMALYDETECTOR_H_ */

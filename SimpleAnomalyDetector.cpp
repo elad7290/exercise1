@@ -157,3 +157,9 @@ bool SimpleAnomalyDetector::isSimple(float corrlation){
     }
     return false;
 }
+float SimpleAnomalyDetector::getThreshold() {
+    return m_threshold;
+}
+void SimpleAnomalyDetector::setThreshold(float newThreshold) {
+    m_threshold=newThreshold;
+}

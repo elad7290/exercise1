@@ -1,31 +1,25 @@
-#ifndef MY_PROJECT_CLI_H
-#define MY_PROJECT_CLI_H
 
-#include "string"
+
+#ifndef CLI_H_
+#define CLI_H_
+
+#include <string.h>
+#include "commands.h"
 
 using namespace std;
 
 class CLI {
+	DefaultIO* m_dio;
+	vector<Command *>m_command_array;
+	TimeSeries train,test;
+	bool exit= false;
+	HybridAnomalyDetector hybrid;
+    vector<AnomalyReport> anomalies;
+	// you can add data members
 public:
-    void start();
-
+	CLI(DefaultIO* dio);
+	void start();
+	virtual ~CLI();
 };
 
-class DefaultIO {
-public:
-    virtual string read() = 0;
-
-    virtual void write(string s) = 0;
-};
-
-class Command {
-private:
-    string description;
-    DefaultIO *dio;
-public:
-    virtual void execute() = 0;
-
-    void printDescription();
-};
-
-#endif //MY_PROJECT_CLI_H
+#endif /* CLI_H_ */
