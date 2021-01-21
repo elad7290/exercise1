@@ -99,12 +99,13 @@ void SimpleAnomalyDetector::freeMemory(vector<Point *> vector) {
  **/
 vector<pair<pair<string, string>, float>> SimpleAnomalyDetector::coralFeatuers(const TimeSeries &ts) {
     vector<string> names = ts.getFeatures();
+    int namesSize=names.size();
     float max, temp;
     pair<string, string> corlPairsName;
     vector<pair<pair<string, string>, float>> c;
-    for (int i = 0; i < names.size(); i++) {
+    for (int i = 0; i < namesSize; i++) {
         max = 0;
-        for (int j = i + 1; j < names.size(); j++) {
+        for (int j = i + 1; j < namesSize; j++) {
             temp = pearson(&ts.getValSamples(names[i])[0], &ts.getValSamples(names[j])[0], ts.getLength(names[i]));
             if (max < temp) {
                 max = temp;
@@ -125,7 +126,8 @@ vector<pair<pair<string, string>, float>> SimpleAnomalyDetector::coralFeatuers(c
  **/
 vector<Point *> SimpleAnomalyDetector::createsAPoins(vector<float> x, vector<float> y) {
     vector<Point *> points;
-    for (int i = 0; i < x.size(); i++) {
+    int xSize=x.size();
+    for (int i = 0; i < xSize; i++) {
         points.push_back(new Point(x[i], y[i]));
     }
     return points;

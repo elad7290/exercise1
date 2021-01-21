@@ -23,11 +23,23 @@ CMakeFiles/my_project.dir/MainTrain.cpp.o: ../AnomalyDetector.h
 CMakeFiles/my_project.dir/MainTrain.cpp.o: ../CLI.h
 CMakeFiles/my_project.dir/MainTrain.cpp.o: ../HybridAnomalyDetector.h
 CMakeFiles/my_project.dir/MainTrain.cpp.o: ../MainTrain.cpp
+CMakeFiles/my_project.dir/MainTrain.cpp.o: ../Server.h
 CMakeFiles/my_project.dir/MainTrain.cpp.o: ../SimpleAnomalyDetector.h
 CMakeFiles/my_project.dir/MainTrain.cpp.o: ../anomaly_detection_util.h
 CMakeFiles/my_project.dir/MainTrain.cpp.o: ../commands.h
 CMakeFiles/my_project.dir/MainTrain.cpp.o: ../minCircle.h
 CMakeFiles/my_project.dir/MainTrain.cpp.o: ../timeseries.h
+
+CMakeFiles/my_project.dir/Server.cpp.o: ../AnomalyDetector.h
+CMakeFiles/my_project.dir/Server.cpp.o: ../CLI.h
+CMakeFiles/my_project.dir/Server.cpp.o: ../HybridAnomalyDetector.h
+CMakeFiles/my_project.dir/Server.cpp.o: ../Server.cpp
+CMakeFiles/my_project.dir/Server.cpp.o: ../Server.h
+CMakeFiles/my_project.dir/Server.cpp.o: ../SimpleAnomalyDetector.h
+CMakeFiles/my_project.dir/Server.cpp.o: ../anomaly_detection_util.h
+CMakeFiles/my_project.dir/Server.cpp.o: ../commands.h
+CMakeFiles/my_project.dir/Server.cpp.o: ../minCircle.h
+CMakeFiles/my_project.dir/Server.cpp.o: ../timeseries.h
 
 CMakeFiles/my_project.dir/SimpleAnomalyDetector.cpp.o: ../AnomalyDetector.h
 CMakeFiles/my_project.dir/SimpleAnomalyDetector.cpp.o: ../SimpleAnomalyDetector.cpp

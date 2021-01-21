@@ -24,6 +24,18 @@ CMakeFiles/my_project.dir/MainTrain.cpp.o
  /home/elad/my_project/CLI.h
  /home/elad/my_project/HybridAnomalyDetector.h
  /home/elad/my_project/MainTrain.cpp
+ /home/elad/my_project/Server.h
+ /home/elad/my_project/SimpleAnomalyDetector.h
+ /home/elad/my_project/anomaly_detection_util.h
+ /home/elad/my_project/commands.h
+ /home/elad/my_project/minCircle.h
+ /home/elad/my_project/timeseries.h
+CMakeFiles/my_project.dir/Server.cpp.o
+ /home/elad/my_project/AnomalyDetector.h
+ /home/elad/my_project/CLI.h
+ /home/elad/my_project/HybridAnomalyDetector.h
+ /home/elad/my_project/Server.cpp
+ /home/elad/my_project/Server.h
  /home/elad/my_project/SimpleAnomalyDetector.h
  /home/elad/my_project/anomaly_detection_util.h
  /home/elad/my_project/commands.h

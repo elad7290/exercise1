@@ -96,12 +96,13 @@ vector<AnomalyReport> HybridAnomalyDetector::detect(const TimeSeries &ts) {
  **/
 vector<pair<pair<string, string>, float>> HybridAnomalyDetector::coralFeatuers(const TimeSeries &ts) {
     vector<string> names = ts.getFeatures();
+    int namesSize=names.size();
     float max, temp;
     pair<string, string> corlPairsName;
     vector<pair<pair<string, string>, float>> c;
-    for (int i = 0; i < names.size(); i++) {
+    for (int i = 0; i < namesSize; i++) {
         max = 0;
-        for (int j = i + 1; j < names.size(); j++) {
+        for (int j = i + 1; j < namesSize; j++) {
             temp = pearson(&ts.getValSamples(names[i])[0], &ts.getValSamples(names[j])[0], ts.getLength(names[i]));
             if (max < temp) {
                 max = temp;

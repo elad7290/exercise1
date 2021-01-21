@@ -23,7 +23,8 @@ void CLI::start() {
             s += to_string(i) + "." + m_command_array[i]->show();
         }
         m_dio->write(s);
-        int choice = stoi(m_dio->read());
+        string sl = m_dio->read();
+        int choice = stoi(sl);
         m_command_array[choice]->execute();
     }
 }

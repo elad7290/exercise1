@@ -1,12 +1,15 @@
 #ifndef COMMANDS_H_
 #define COMMANDS_H_
 
+#include <sys/socket.h>
 #include<iostream>
 #include <string.h>
 #include <sstream>
 #include <fstream>
 #include <vector>
 #include "HybridAnomalyDetector.h"
+
+#define MSS 1024
 
 using namespace std;
 
@@ -51,6 +54,51 @@ public:
 
     ~StandardIO() {}
 };
+
+class SocketIO : public DefaultIO {
+private:
+    int m_fd;
+public:
+    SocketIO(int fd) {
+        m_fd = fd;
+    }
+
+    string read() override {
+        string buffer = "";
+        char dummy = 0;
+        //bzero(buffer, MSS);
+        recv(m_fd, &dummy, sizeof(char), 0);
+        while (dummy != '\n') {
+            buffer += dummy;
+            recv(m_fd, &dummy, sizeof(char), 0);
+        }
+        return buffer;
+    }
+
+    void read(float *f) override {
+        string text = "";
+        char dummy = 0;
+        recv(m_fd, &dummy, sizeof(char), 0);
+        while (dummy != '\n') {
+            text += dummy;
+            recv(m_fd, &dummy, sizeof(char), 0);
+        }
+        stringstream s(text);
+        s >> *f;
+    }
+
+    void write(string text) override {
+        send(m_fd, &text[0], strlen(&text[0]), 0);
+    }
+
+    void write(float f) override {
+        ostringstream text;
+        text << f;
+        send(m_fd, text.str().c_str(), text.str().length(), 0);
+    }
+
+
+};
 // you may add here helper classes
 
 
@@ -67,6 +115,7 @@ public:
     virtual void execute() = 0;
 
     virtual ~Command() {}
+
     float precision(float val, int n) {
         val = val * pow(10, n);
         val = floor(val);
@@ -281,7 +330,7 @@ public:
             input.replace(input.find(token1), token1.length() + 1, "");
             string token2 = input.substr(0, input.find(","));
             input_anomalies_compress_range.push_back(make_pair(stof(token1), stof(token2)));
-            input=dio->read();
+            input = dio->read();
 
         }
         dio->write("Upload complete.\n");
@@ -347,5 +396,6 @@ public:
         *to_exit = true;
     }
 };
+
 
 #endif /* COMMANDS_H_ */
